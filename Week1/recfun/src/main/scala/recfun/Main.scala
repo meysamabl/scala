@@ -43,6 +43,6 @@ object Main {
     def countChange(money: Int, coins: List[Int]): Int =
       if (money < 0 || coins.isEmpty) 0 // is remaining amount is less than zero, or there is no coin and remaining amount is still not zero, no solution
       else if (money == 0) 1 // if the remaining amount is zero is recursive, there is solution
-      // solution 1) 
+      // solution 1)
       else countChange(money, coins.tail) + countChange(money - coins.head, coins)
   }
