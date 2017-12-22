@@ -29,10 +29,10 @@ class FunSetSuite extends FunSuite {
   /**
    * Tests are written using the "test" operator and the "assert" method.
    */
-  // test("string take") {
-  //   val message = "hello, world"
-  //   assert(message.take(5) == "hello")
-  // }
+   test("string take") {
+     val message = "hello, world"
+     assert(message.take(5) == "hello")
+   }
 
   /**
    * For ScalaTest tests, there exists a special equality operator "===" that
@@ -43,9 +43,9 @@ class FunSetSuite extends FunSuite {
    * Try it out! Change the values so that the assertion fails, and look at the
    * error message.
    */
-  // test("adding ints") {
-  //   assert(1 + 2 === 3)
-  // }
+   test("adding ints") {
+     assert(1 + 2 === 3)
+   }
 
 
   import FunSets._
@@ -110,5 +110,28 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("for all is working fine") {
+    val set1 = union(singletonSet(2), singletonSet(3))
+    val set2 = union(singletonSet(3), singletonSet(7))
+    val unionSets = union(set1,set2)
+    assert(forall(unionSets, x => x >= 2 && x<8))
+  }
+
+  test("Exist is working fine") {
+    val set1 = union(singletonSet(2), singletonSet(3))
+    val set2 = union(singletonSet(3), singletonSet(7))
+    val unionSets = union(set1,set2)
+    assert(exists(unionSets, x => x == 2))
+    assert(!exists(unionSets, x => x == 8))
+  }
+
+  test("Map is working fine") {
+    val set1 = union(singletonSet(2), singletonSet(3))
+    val set2 = union(singletonSet(3), singletonSet(7))
+    val unionSets = union(set1,set2)
+    assert(contains(map(unionSets, x => x * x), 4))
+    assert(contains(map(unionSets, x => x * x), 9))
+    assert(contains(map(unionSets, x => x * x), 49))
+  }
 
 }
