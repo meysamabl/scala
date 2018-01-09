@@ -35,4 +35,6 @@ class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
 
 val s1 = new NonEmpty(3, Empty, Empty)
 val s2 = s1 incl 4
-val s3 = s2 incl 6
+val s3 = s1 incl 6
+val s4 = s2 union s3
+
